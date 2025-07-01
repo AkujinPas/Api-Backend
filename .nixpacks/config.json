@@ -1,0 +1,7 @@
+{
+  "phases": {
+    "install": {
+      "nixPkgs": ["php81", "composer", "php81Packages.zip", "php81Packages.pdo", "php81Packages.pdo_mysql"]
+    }
+  }
+}
