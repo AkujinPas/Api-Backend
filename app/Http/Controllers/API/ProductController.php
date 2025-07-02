@@ -52,6 +52,29 @@ class ProductController extends Controller
         $data = Product::find($id);
         return response()->json($data, 200);
       }
+public function restarStock($id, Request $request)
+{
+    $producto = Product::find($id);
+
+    if (!$producto) {
+        return response()->json(['message' => 'Producto no encontrado'], 404);
+    }
+
+    $cantidad = $request->input('cantidad');
+
+    if (!is_numeric($cantidad) || $cantidad <= 0) {
+        return response()->json(['message' => 'Cantidad inválida'], 400);
+    }
+
+    if ($producto->stock < $cantidad) {
+        return response()->json(['message' => 'Stock insuficiente'], 400);
+    }
+
+    $producto->stock -= $cantidad;
+    $producto->save();
+
+    return response()->json(['message' => 'Stock actualizado', 'nuevo_stock' => $producto->stock], 200);
+}
 
       public function update(Request $request,$id){
         $data['name'] = $request['name'];

@@ -21,6 +21,8 @@ Route::prefix('product')->group(function () {
     Route::delete('/{id}',[ ProductController::class, 'delete']);
     Route::get('/{id}',[ ProductController::class, 'get']);
     Route::put('/{id}',[ ProductController::class, 'update']);
+    Route::put('/{id}/restar-stock', [ProductController::class, 'restarStock']);
+
 });
 
 Route::prefix('v1')->group(function () {
@@ -41,3 +43,4 @@ Route::prefix('orders')->group(function () {
     Route::patch('/{id}/estado', [OrderController::class, 'updateEstado']);
     Route::patch('/{id}/verificar-pago', [OrderController::class, 'verificarPago']);
 });
+
