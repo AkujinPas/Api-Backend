@@ -9,6 +9,8 @@ use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CartItemController;
 use App\Http\Controllers\API\UserPaymentMethodController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\OrderController;
+
 
 
 
@@ -31,3 +33,11 @@ Route::prefix('v1')->group(function () {
 });
 
 Route::post('v1/login', [AuthController::class, 'login']);
+
+Route::post('/ordenes', [OrderController::class, 'store']);
+
+Route::prefix('orders')->group(function () {
+    Route::get('/', [OrderController::class, 'index']);
+    Route::patch('/{id}/estado', [OrderController::class, 'updateEstado']);
+    Route::patch('/{id}/verificar-pago', [OrderController::class, 'verificarPago']);
+});
