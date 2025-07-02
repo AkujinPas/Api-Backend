@@ -3,12 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
-use App\Http\Controllers\Api\AddressController;
-use App\Http\Controllers\Api\ProductController;
-use App\Http\Controllers\Api\CartController;
-use App\Http\Controllers\Api\CartItemController;
-use App\Http\Controllers\Api\UserPaymentMethodController;
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\API\AddressController;
+use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\CartController;
+use App\Http\Controllers\API\CartItemController;
+use App\Http\Controllers\API\UserPaymentMethodController;
+use App\Http\Controllers\API\AuthController;
 
 
 
