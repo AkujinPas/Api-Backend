@@ -13,13 +13,11 @@ class OrderDetail extends Model
         'price'
     ];
 
-    // Relación con la orden principal
     public function order()
     {
         return $this->belongsTo(Order::class);
     }
 
-    // Relación con el producto asociado
     public function product()
     {
         return $this->belongsTo(Product::class);

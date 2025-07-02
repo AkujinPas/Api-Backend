@@ -31,7 +31,7 @@ class OrderController extends Controller
     public function verificarPago($id)
     {
         $order = Order::findOrFail($id);
-        $order->transaccion_id = uniqid('trx_'); // simula un código de transacción
+        $order->transaccion_id = uniqid('trx_');
         $order->save();
 
         return response()->json(['message' => 'Pago verificado']);
@@ -51,7 +51,6 @@ class OrderController extends Controller
             'direccion' => 'nullable|string',
         ]);
 
-        // Crear la orden
         $order = Order::create([
             'user_id' => $validated['user_id'],
             'total' => $validated['total'],
@@ -61,7 +60,6 @@ class OrderController extends Controller
             'direccion' => $validated['direccion'] ?? null,
         ]);
 
-        // Guardar detalles de la orden
         foreach ($validated['productos'] as $producto) {
             $order->detalles()->create([
                 'product_id' => $producto['product_id'],
@@ -74,5 +72,16 @@ class OrderController extends Controller
             'message' => 'Orden creada correctamente con detalles',
             'order' => $order->load('detalles.product')
         ], 201);
+    }
+
+    // ✅ NUEVO: Obtener órdenes de un cliente específico
+    public function obtenerOrdenesCliente($id)
+    {
+        $ordenes = Order::with(['detalles.product'])
+            ->where('user_id', $id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json($ordenes);
     }
 }

@@ -42,6 +42,7 @@ Route::post('v1/login', [AuthController::class, 'login']);
         Route::post('/', [OrderController::class, 'store']);  // crear orden
         Route::patch('/{id}/estado', [OrderController::class, 'updateEstado']);
         Route::patch('/{id}/verificar-pago', [OrderController::class, 'verificarPago']);
-    
+        Route::get('/cliente/{id}', [OrderController::class, 'obtenerOrdenesCliente']);
+
 });
 

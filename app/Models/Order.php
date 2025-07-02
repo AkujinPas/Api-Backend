@@ -16,13 +16,13 @@ class Order extends Model
         'direccion'
     ];
 
-    // Relación con el usuario que hace la orden
+    // Relación con el usuario
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Relación con los detalles de la orden (OrderDetail)
+    // Relación con los detalles
     public function detalles()
     {
         return $this->hasMany(OrderDetail::class);
