@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,12 +17,12 @@ class CreateProductTable extends Migration
             $table->decimal('price', 10, 2);
             $table->text('description');
             $table->text('details');
-            $table->integer('stock')->digits(5);
+            $table->unsignedInteger('stock'); // Cambiado a unsignedInteger
             $table->enum('category_type', ['Calzado', 'Accesorios', 'Ropa']);
-                        $table->enum('shoes_type', ['Zapatillas', 'Botas', 'Sandalias', 'Zapatos formales'])->nullable();
-                        $table->enum('accesories_type', ['Gorras', 'Bufandas', 'Bolsas', 'Lentes de sol', 'Relojes', 'Cinturones'])->nullable();
-                        $table->enum('fashion_type', ['Vestidos', 'Pantalones', 'Camisas', 'Faldas', 'Chaquetas'])->nullable();
-                        $table->enum('season', ['PRIMAVERA-VERANO', 'OTOÑO-INVIERNO'])->nullable();
+            $table->enum('shoes_type', ['Zapatillas', 'Botas', 'Sandalias', 'Zapatos formales'])->nullable();
+            $table->enum('accesories_type', ['Gorras', 'Bufandas', 'Bolsas', 'Lentes de sol', 'Relojes', 'Cinturones'])->nullable();
+            $table->enum('fashion_type', ['Vestidos', 'Pantalones', 'Camisas', 'Faldas', 'Chaquetas'])->nullable();
+            $table->enum('season', ['PRIMAVERA-VERANO', 'OTOÑO-INVIERNO'])->nullable();
             $table->enum('category_g', ['Hombres', 'Mujeres', 'Niños']);
             $table->text('mark');
             $table->text('model');
@@ -42,4 +42,4 @@ class CreateProductTable extends Migration
     {
         Schema::dropIfExists('products');
     }
-};
+}
