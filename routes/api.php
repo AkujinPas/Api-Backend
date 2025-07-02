@@ -36,7 +36,6 @@ Route::prefix('v1')->group(function () {
 
 Route::post('v1/login', [AuthController::class, 'login']);
 
-Route::post('/ordenes', [OrderController::class, 'store']);
 
     Route::prefix('orders')->group(function () {
         Route::get('/', [OrderController::class, 'index']);
