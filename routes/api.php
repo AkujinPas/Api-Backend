@@ -38,9 +38,11 @@ Route::post('v1/login', [AuthController::class, 'login']);
 
 Route::post('/ordenes', [OrderController::class, 'store']);
 
-Route::prefix('orders')->group(function () {
-    Route::get('/', [OrderController::class, 'index']);
-    Route::patch('/{id}/estado', [OrderController::class, 'updateEstado']);
-    Route::patch('/{id}/verificar-pago', [OrderController::class, 'verificarPago']);
+    Route::prefix('orders')->group(function () {
+        Route::get('/', [OrderController::class, 'index']);
+        Route::post('/', [OrderController::class, 'store']);  // crear orden
+        Route::patch('/{id}/estado', [OrderController::class, 'updateEstado']);
+        Route::patch('/{id}/verificar-pago', [OrderController::class, 'verificarPago']);
+    
 });
 
